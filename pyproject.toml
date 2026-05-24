@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "one-piece-autobuy"
+version = "0.1.0"
+description = "Auto-buy mensile dei volumi One Piece New Edition su Amazon.it"
+requires-python = ">=3.10"
+dependencies = [
+    "playwright>=1.49,<2.0",
+    "playwright-stealth>=1.0.6,<2.0",
+    "python-dotenv>=1.0,<2.0",
+]
+
+[tool.setuptools]
+packages = ["src"]
