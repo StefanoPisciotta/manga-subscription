@@ -135,7 +135,7 @@ logs/
 Lo script **non acquista mai senza conferma manuale** via pulsante Telegram, salvo quando `DRY_RUN=true` (che disabilita completamente l'acquisto e si limita a notificare). La validazione hard-fail blocca l'acquisto prima ancora di chiedere conferma se:
 
 - titolo non contiene `One Piece`, `New Edition`, `vol. N`
-- editore diverso da Panini
+- editore diverso da Star Comics (o Panini come fallback)
 - formato non cartaceo
 - prezzo > `MAX_PRICE_EUR`
 - prodotto non disponibile
@@ -151,3 +151,17 @@ In caso di fail → notifica Telegram di alert, exit non-zero, nessuna modifica 
 - **Validazione fallisce sempre per editore/formato**: Amazon ha cambiato il markup → aggiornare i selettori in `src/amazon.py` (vedi commento data verifica in cima).
 - **Cron non parte**: `grep CRON /var/log/cron` e verificare PATH/HOME nel wrapper.
 - **Sessione Amazon scaduta** (login richiesto durante cron headless): rilanciare `scripts/setup_login.py` via SSH X11.
+
+## Roadmap
+
+Lo scopo a lungo termine di questo progetto e' diventare un framework di
+**subscription Amazon customizzate** — qualsiasi manga, e potenzialmente altre
+categorie di prodotti ricorrenti (libri, riviste, etc.). Lo stato attuale e'
+scope-specifico per One Piece New Edition; le evoluzioni previste:
+
+- [ ] Refactor `src/amazon.py` per accettare parametri (titolo, editore, regex
+      volume, soglia prezzo, cadenza) invece di hardcoded constants.
+- [ ] File `subscriptions.yaml` con la lista delle serie monitorate.
+- [ ] Cronjob unico che itera su tutte le subscription attive.
+- [ ] Notifica Telegram raggruppata quando piu' subscription scattano lo stesso giorno.
+- [ ] (Opzionale) Health-check settimanale della sessione Amazon con alert anticipato.
