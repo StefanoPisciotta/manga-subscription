@@ -10,7 +10,7 @@ A Python script that every month automatically buys the next volume of One Piece
 
 ## Tech stack
 - **Playwright** (Python) — headless browser automation
-- **playwright-stealth** — Amazon anti-bot evasion
+- **playwright-stealth** — reduces automation fingerprints that break page rendering
 - **cron** — monthly scheduling (1st of the month)
 - Persistent Chrome profile with an already-authenticated Amazon session
 
@@ -36,6 +36,6 @@ A Python script that every month automatically buys the next volume of One Piece
 - [ ] Test in dry-run (no real purchase)
 
 ## Notes
-- Amazon detects headless browsers → `playwright-stealth` + a persistent profile are required
+- A plain headless browser does not render the pages reliably → `playwright-stealth` + a persistent profile are required
 - The current volume must be tracked in a state file (e.g. `state.json`) and incremented after each successful purchase
 - Handle the case where the volume is not yet available (retry or notify)

@@ -4,6 +4,21 @@ Automatically buys the next volume of *One Piece New Edition* on Amazon.it each
 month, using Playwright + cron, with **manual confirmation via Telegram**
 (inline buttons) before the final click.
 
+> ### ⚠️ Read before using
+>
+> - **This spends real money.** It drives a logged-in Amazon account and places
+>   real orders against the payment method and address saved on it. Keep
+>   `DRY_RUN=true` until you have watched a full run end to end.
+> - **Automating Amazon likely violates its Conditions of Use**, which prohibit
+>   accessing the site with robots or automated tools. Running this may put your
+>   Amazon account at risk, up to suspension. Personal, non-commercial
+>   experiment — use it at your own risk.
+> - **No warranty.** See [LICENSE](LICENSE). The author is not liable for
+>   unwanted purchases, account actions, or anything else that follows from
+>   running this code.
+> - Written for **amazon.it** and an Italian-language page layout. It will not
+>   work as-is on other Amazon domains.
+
 ## How it works
 
 On the 1st of each month the script:
